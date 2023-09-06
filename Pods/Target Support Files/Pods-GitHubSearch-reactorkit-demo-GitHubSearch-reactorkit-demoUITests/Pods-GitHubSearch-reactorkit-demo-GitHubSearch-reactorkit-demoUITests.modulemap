@@ -1,0 +1,6 @@
+framework module Pods_GitHubSearch_reactorkit_demo_GitHubSearch_reactorkit_demoUITests {
+  umbrella header "Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
