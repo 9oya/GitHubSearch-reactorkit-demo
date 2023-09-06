@@ -42,11 +42,49 @@ class UserListTbCell: UITableViewCell, View {
     }
     
     func bindAction(_ reactor: UserListTbCellReactor) {
+        reactor.action.onNext(.initUserInfo)
+        reactor.action.onNext(.initImage)
+        reactor.action.onNext(.valateBookmark)
         
+        button.rx
+            .tap
+            .map { [weak self] _ in self?.button.isSelected ?? false }
+            .bind { hasMarked in
+                hasMarked ? reactor.action.onNext(.unselectBookmark) : reactor.action.onNext(.selectBookmark)
+            }
+            .disposed(by: disposeBag)
     }
     
     func bindState(_ reactor: UserListTbCellReactor) {
+        reactor.state
+            .map { $0.image }
+            .bind(to: imgView.rx.image)
+            .disposed(by: disposeBag)
         
+        reactor.state
+            .map { $0.infoModel }
+            .compactMap { $0?.name }
+            .bind(to: nameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.hasMarked }
+            .bind { [weak self] hasMarked in
+                guard let `self` = self else  { return }
+                let config = UIImage
+                    .SymbolConfiguration(pointSize: 23.0,
+                                         weight: .regular,
+                                         scale: .large)
+                var image = UIImage(systemName: "bookmark",
+                                    withConfiguration: config)
+                if hasMarked {
+                    image = UIImage(systemName: "bookmark.fill",
+                                    withConfiguration: config)
+                }
+                self.button.isSelected = hasMarked
+                self.button.setImage(image, for: .normal)
+            }
+            .disposed(by: disposeBag)
     }
     
     func setupView() {

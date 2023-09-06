@@ -16,14 +16,16 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
         case initUserInfo
         case initImage
         case valateBookmark
-        case bookmarkAction
+        case selectBookmark
+        case unselectBookmark
     }
     
     enum Mutation {
-        case setUserInfo(Result<UserInfoModel, any Error>)
+        case setUserInfo(Result<UserInfoModel, Error>)
         case setImage(UIImage)
-        case setBookmark(Result<UserItem?, any Error>)
-        case setBookmarkForAction(Result<UserItem, any Error>)
+        case setBookmark(Result<UserItem?, Error>)
+        case addBookmark(Result<UserItem, Error>)
+        case removeBookmark(Result<Bool, Error>)
     }
     
     struct State {
@@ -69,11 +71,19 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
                 .match(id: currentState.userItemModel.id)
                 .asObservable()
                 .map { .setBookmark($0) }
-        case .bookmarkAction:
+        case .selectBookmark:
             return validateUserInfoModelState(state: currentState)
                 .flatMap(provider.coreDataService.store)
                 .asObservable()
-                .map { .setBookmarkForAction($0) }
+                .map { .addBookmark($0) }
+        case .unselectBookmark:
+            return provider
+                .coreDataService
+                .match(id: currentState.userItemModel.id)
+                .flatMap(validateUserIdMatch)
+                .flatMap(provider.coreDataService.remove)
+                .asObservable()
+                .map { .removeBookmark($0) }
             
         }
     }
@@ -97,12 +107,19 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
             case let .success(userItem):
                 newState.hasMarked = userItem != nil ? true : false
             }
-        case .setBookmarkForAction(let result):
+        case let .addBookmark(result):
             switch result {
             case let .failure(error):
                 print(error.localizedDescription)
             case .success(_):
                 newState.hasMarked = true
+            }
+        case let .removeBookmark(result):
+            switch result {
+            case let .failure(error):
+                print(error.localizedDescription)
+            case .success(_):
+                newState.hasMarked = false
             }
         }
         return newState
@@ -145,6 +162,26 @@ extension UserListTbCellReactor {
                 single(.success((self.currentState.userItemModel, self.currentState.infoModel!)))
             }
             
+            return Disposables.create()
+        }
+    }
+    
+    func validateUserIdMatch(result: Result<UserItem?, Error>) -> PrimitiveSequence<SingleTrait, UserItem> {
+        return Single.create { single in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+                single(.failure(error))
+            case .success(let userItem):
+                if let userItem = userItem {
+                    single(.success(userItem))
+                } else {
+                    single(.failure(CustomError(title: "",
+                                                description: "nil value",
+                                                code: 0)))
+                }
+                return Disposables.create()
+            }
             return Disposables.create()
         }
     }
