@@ -10,12 +10,13 @@ import UIKit
 typealias CellHandler = ((IndexPath)->Void)?
 
 protocol CellConfigProtocol {
-    
-    var tag: Int { get }
-    var identifier: String { get }
     var cellIdentifier: String { get }
-    func cellConfigurator(cell: UITableViewCell,
-                          indexPath: IndexPath)
+    var cellHeight: CGFloat { get }
+    
+    func configure(cell: UITableViewCell,
+                   with indexPath: IndexPath)
     -> UITableViewCell
-    var handleCellWith: CellHandler { get }
+    
+    func distinctIdentifier()
+    -> String
 }
