@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18B5D6D2C5532CA9A78B0D66 /* Pods_GitHubSearch_reactorkit_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620027EFA7C83A9150F169C7 /* Pods_GitHubSearch_reactorkit_demo.framework */; };
 		81FE32357ED0AD3AC4DD4D5E /* Pods_GitHubSearch_reactorkit_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154784B033142EAD062DF9E5 /* Pods_GitHubSearch_reactorkit_demoTests.framework */; };
+		BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */; };
 		BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977022AA83067001A3883 /* AppDelegate.swift */; };
 		BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977042AA83067001A3883 /* SceneDelegate.swift */; };
 		BFE9770C2AA83068001A3883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9770B2AA83068001A3883 /* Assets.xcassets */; };
@@ -17,7 +18,7 @@
 		BFE977242AA83069001A3883 /* GitHubSearch_reactorkit_demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977232AA83069001A3883 /* GitHubSearch_reactorkit_demoUITests.swift */; };
 		BFE977262AA83069001A3883 /* GitHubSearch_reactorkit_demoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977252AA83069001A3883 /* GitHubSearch_reactorkit_demoUITestsLaunchTests.swift */; };
 		BFE977342AA84EC3001A3883 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFE977332AA84EC3001A3883 /* ReactorKit */; };
-		BFE9773F2AA85325001A3883 /* SearchVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9773E2AA85325001A3883 /* SearchVIewController.swift */; };
+		BFE9773F2AA85325001A3883 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9773E2AA85325001A3883 /* SearchViewController.swift */; };
 		BFE977412AA85464001A3883 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977402AA85464001A3883 /* SearchReactor.swift */; };
 		BFE9774A2AA8551E001A3883 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977492AA8551E001A3883 /* APIRouter.swift */; };
 		BFE9774D2AA8557E001A3883 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9774C2AA8557E001A3883 /* UITableView+Extension.swift */; };
@@ -79,6 +80,7 @@
 		620027EFA7C83A9150F169C7 /* Pods_GitHubSearch_reactorkit_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSearch_reactorkit_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683807C9C18BACEE4335AADB /* Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demoTests/Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		69FFE3A030DD8522A0AA172E /* Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHubSearch-reactorkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977022AA83067001A3883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE977042AA83067001A3883 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		BFE9771F2AA83069001A3883 /* GitHubSearch-reactorkit-demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitHubSearch-reactorkit-demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977232AA83069001A3883 /* GitHubSearch_reactorkit_demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearch_reactorkit_demoUITests.swift; sourceTree = "<group>"; };
 		BFE977252AA83069001A3883 /* GitHubSearch_reactorkit_demoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearch_reactorkit_demoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BFE9773E2AA85325001A3883 /* SearchVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVIewController.swift; sourceTree = "<group>"; };
+		BFE9773E2AA85325001A3883 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BFE977402AA85464001A3883 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
 		BFE977492AA8551E001A3883 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		BFE9774C2AA8557E001A3883 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF129D102AA99BF000E4463F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		BFE976F62AA83067001A3883 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +238,7 @@
 		BFE9773A2AA852C3001A3883 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BF129D102AA99BF000E4463F /* TabBar */,
 				BFE9773D2AA852F3001A3883 /* Bookmarks */,
 				BFE9773C2AA852EC001A3883 /* Search */,
 			);
@@ -246,7 +257,7 @@
 		BFE9773C2AA852EC001A3883 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				BFE9773E2AA85325001A3883 /* SearchVIewController.swift */,
+				BFE9773E2AA85325001A3883 /* SearchViewController.swift */,
 				BFE977402AA85464001A3883 /* SearchReactor.swift */,
 			);
 			path = Search;
@@ -632,9 +643,10 @@
 				BFE977662AA85D75001A3883 /* UIViewController+Rx.swift in Sources */,
 				BFE977592AA85A69001A3883 /* UserItem+CoreDataClass.swift in Sources */,
 				BFE977732AA85F0C001A3883 /* String+Extension.swift in Sources */,
+				BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */,
 				BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */,
 				BFE977552AA859BC001A3883 /* GitHubSearch-reactorkit-demo.xcdatamodeld in Sources */,
-				BFE9773F2AA85325001A3883 /* SearchVIewController.swift in Sources */,
+				BFE9773F2AA85325001A3883 /* SearchViewController.swift in Sources */,
 				BFE977832AA86387001A3883 /* CellConfig.swift in Sources */,
 				BFE977882AA8678F001A3883 /* SearchResponseModel.swift in Sources */,
 				BFE977962AA86861001A3883 /* ImageService.swift in Sources */,

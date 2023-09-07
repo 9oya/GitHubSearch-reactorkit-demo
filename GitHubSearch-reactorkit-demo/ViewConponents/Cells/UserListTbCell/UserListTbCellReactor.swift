@@ -40,11 +40,8 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
     
     init(userItemModel: UserItemModel,
          provider: ServiceProviderProtocol,
-         cellIdentifier: String,
          cellHeight: CGFloat) {
         self.provider = provider
-        self.cellIdentifier = cellIdentifier
-        self.cellIdentifier = cellIdentifier
         self.cellHeight = cellHeight
         self.initialState = State(userItemModel: userItemModel,
                                   hasMarked: false)
@@ -127,7 +124,7 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
     
     // MARK: CellConfigProtocol
     
-    var cellIdentifier: String
+    var cellIdentifier: String = String(describing: UserListTbCell.self)
     var cellHeight: CGFloat
     
     func configure(cell: UITableViewCell, with indexPath: IndexPath) -> UITableViewCell {
@@ -150,7 +147,8 @@ class UserListTbCellReactor: Reactor, CellConfigProtocol {
 
 extension UserListTbCellReactor {
     
-    func validateUserInfoModelState(state: State) -> PrimitiveSequence<SingleTrait, (UserItemModel, UserInfoModel)> {
+    func validateUserInfoModelState(state: State) 
+    -> PrimitiveSequence<SingleTrait, (UserItemModel, UserInfoModel)> {
         return Single.create { [weak self] single -> Disposable in
             guard let `self` = self else { return Disposables.create() }
         
@@ -166,7 +164,8 @@ extension UserListTbCellReactor {
         }
     }
     
-    func validateUserIdMatch(result: Result<UserItem?, Error>) -> PrimitiveSequence<SingleTrait, UserItem> {
+    func validateUserIdMatch(result: Result<UserItem?, Error>) 
+    -> PrimitiveSequence<SingleTrait, UserItem> {
         return Single.create { single in
             switch result {
             case .failure(let error):
