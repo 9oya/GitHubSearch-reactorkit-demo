@@ -27,10 +27,6 @@ extension SceneDelegate {
     private func rootViewController() -> UIViewController {
         let provider = ServiceProvider.resolve()
         let searchVC = SearchViewController()
-        searchVC.reactor = SearchReactor(title: "Search",
-                                         placeHolder: "Name...",
-                                         provider: provider)
-        
         let searchNC = UINavigationController(rootViewController: searchVC)
         searchNC.tabBarItem.image = {
             let config = UIImage
@@ -40,25 +36,29 @@ extension SceneDelegate {
             return UIImage(systemName: "magnifyingglass",
                            withConfiguration: config)
         }()
+        searchVC.reactor = SearchReactor(title: "Search",
+                                         placeHolder: "Name...",
+                                         provider: provider)
         
-        let bookmarksVM = BookmarksViewModel(title: "Bookmarks",
-                                             placeHolder: "Name...",
-                                             provider: provider)
-        let bookmarksVC = BookmarksViewController()
-        bookmarksVC.viewModel = bookmarksVM
-
-        let bookmarksNC = UINavigationController(rootViewController: bookmarksVC)
-        bookmarksNC.tabBarItem.image = {
-            let config = UIImage
-                .SymbolConfiguration(pointSize: 15.0,
-                                     weight: .regular,
-                                     scale: .large)
-            return UIImage(systemName: "bookmark",
-                           withConfiguration: config)
-        }()
+//        let bookmarksVM = BookmarksViewModel(title: "Bookmarks",
+//                                             placeHolder: "Name...",
+//                                             provider: provider)
+//        let bookmarksVC = BookmarksViewController()
+//        bookmarksVC.viewModel = bookmarksVM
+//
+//        let bookmarksNC = UINavigationController(rootViewController: bookmarksVC)
+//        bookmarksNC.tabBarItem.image = {
+//            let config = UIImage
+//                .SymbolConfiguration(pointSize: 15.0,
+//                                     weight: .regular,
+//                                     scale: .large)
+//            return UIImage(systemName: "bookmark",
+//                           withConfiguration: config)
+//        }()
         
         let tc = MainTabbarController()
-        tc.viewControllers = [searchNC, bookmarksNC]
+//        tc.viewControllers = [searchNC, bookmarksNC]
+        tc.viewControllers = [searchNC]
         return tc
     }
 }

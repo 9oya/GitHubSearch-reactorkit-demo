@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
             .throttle(.seconds(1),
                       scheduler: MainScheduler.instance)
             .map { [weak self] _ -> String? in
-                self?.sc.searchBar.text
+                self?.sc?.searchBar.text
             }
             .do { [weak self] _ in
                 if self?.tv.visibleCells.count ?? 0 > 0 {
@@ -71,6 +71,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
     
     func bindState(_ reactor: SearchReactor) {
         reactor.state
+            .map { $0.title }
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.placeHolder }
+            .bind(to: sc.searchBar.rx.placeholder)
+            .disposed(by: disposeBag)
+        
+        reactor.state
             .map { $0.cellConfigs }
             .do { [weak self] cellConfigs in
                 self?.cellConfigs = cellConfigs
@@ -91,13 +101,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
     func setupViews(_ reactor: SearchReactor) {
         guard let nc = navigationController else { return }
         nc.navigationBar.prefersLargeTitles = true
-        navigationItem.title = reactor.currentState.title 
         view.backgroundColor = .white
         
         sc = {
             let sc = UISearchController(searchResultsController: nil)
             sc.obscuresBackgroundDuringPresentation = false
-            sc.searchBar.placeholder = reactor.currentState.placeHolder
             sc.searchBar.autocapitalizationType = .none
             return sc
         }()

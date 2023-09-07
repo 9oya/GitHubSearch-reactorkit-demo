@@ -39,7 +39,7 @@ class SearchReactor: Reactor {
          placeHolder: String,
          provider: ServiceProviderProtocol) {
         self.initialState = State(title: title,
-                                  placeHolder: placeHolder
+                                  placeHolder: placeHolder,
                                   cellConfigs: [],
                                   currentPage: 0,
                                   isLoadingNextPage: false,
