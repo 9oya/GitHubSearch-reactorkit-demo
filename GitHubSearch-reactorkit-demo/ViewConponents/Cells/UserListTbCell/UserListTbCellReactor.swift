@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-class UserListTbCellReactor: Reactor, CellConfigProtocol {
+class UserListTbCellReactor: Reactor, CellConfigType {
     
     enum Action {
         case initUserInfo

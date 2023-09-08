@@ -9,7 +9,7 @@ import UIKit
 
 typealias CellHandler = ((IndexPath)->Void)?
 
-protocol CellConfigProtocol {
+protocol CellConfigType {
     var cellIdentifier: String { get }
     var cellHeight: CGFloat { get }
     

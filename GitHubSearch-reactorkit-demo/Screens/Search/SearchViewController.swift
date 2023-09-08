@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
     var tv: UITableView!
     
     var disposeBag: DisposeBag = DisposeBag()
-    var cellConfigs: [CellConfigProtocol] = []
+    var rowConfigs: [CellConfigType] = []
     
     func bind(reactor: SearchReactor) {
         setupViews()
@@ -81,9 +81,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
             .disposed(by: disposeBag)
         
         reactor.state
-            .map { $0.cellConfigs }
+            .map { $0.rowConfigs }
             .do { [weak self] cellConfigs in
-                self?.cellConfigs = cellConfigs
+                self?.rowConfigs = cellConfigs
             }
             .bind(to: tv.rx.items) { tv, idx, item -> UITableViewCell in
                 let cell = tv.dequeueReusableCell(
@@ -132,7 +132,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
     
     func tableView(_ tableView: UITableView, 
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard cellConfigs.count > 0 else { return 0 }
-        return self.cellConfigs[indexPath.row].cellHeight
+        guard rowConfigs.count > 0 else { return 0 }
+        return self.rowConfigs[indexPath.row].cellHeight
     }
 }

@@ -15,7 +15,7 @@ struct BookmarkSection {
 }
 
 extension BookmarkSection: SectionModelType {
-    typealias Item = CellConfigProtocol
+    typealias Item = CellConfigType
     
     init(original: BookmarkSection, items: [Item]) {
         self = original

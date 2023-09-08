@@ -19,7 +19,7 @@ class BookmarksReactor: Reactor {
     
     enum Mutation {
         case setPrevInit
-        case setAfterInit([BookmarkSection])
+        case setNextPage([BookmarkSection])
         case setSearchResult(String, [BookmarkSection])
         case setLoading(Bool)
         case setCanceled
@@ -36,6 +36,7 @@ class BookmarksReactor: Reactor {
     
     var initialState: State
     let provider: ServiceProviderProtocol
+    var cachedConfigDict: [String: [CellConfigType]] = [:]
     
     init(title: String,
          placeHolder: String,
@@ -72,10 +73,11 @@ class BookmarksReactor: Reactor {
                     .filter { $0.count > 0 }
                     .catchAndReturn([])
                     .asObservable()
-                    .map { Mutation.setAfterInit($0) }
+                    .map { Mutation.setNextPage($0) }
             ])
         case let .search(query):
             guard query != nil else { return .empty() }
+            cachedConfigDict = [:]
             
             return .concat([
                 .just(.setLoading(false)),
@@ -88,7 +90,9 @@ class BookmarksReactor: Reactor {
                     .flatMap(bookmarkSections)
                     .catchAndReturn([])
                     .asObservable()
-                    .map { .setSearchResult(query!, $0) }
+                    .map { .setSearchResult(query!, $0) },
+                
+                .just(.setLoading(false))
             ])
         case .nextPage:
             guard !currentState.isLoadingNextPage else { return .empty() }
@@ -97,10 +101,10 @@ class BookmarksReactor: Reactor {
             if currentState.query != nil {
                 functionComponent = provider.coreDataService
                     .search(with: currentState.query!,
-                            for: currentState.currPage)
+                            for: currentState.currPage + 1)
             } else {
                 functionComponent = provider.coreDataService
-                    .fetch(page: currentState.currPage)
+                    .fetch(page: currentState.currPage + 1)
             }
             
             return .concat([
@@ -111,10 +115,25 @@ class BookmarksReactor: Reactor {
                     .flatMap(bookmarkSections)
                     .catchAndReturn([])
                     .asObservable()
-                    .map { .setAfterInit($0) }
+                    .map { .setNextPage($0) },
+                
+                .just(.setLoading(false))
             ])
         case .cancel:
-            return .just(.setCanceled)
+            cachedConfigDict = [:]
+            
+            return .concat([
+                .just(.setCanceled),
+                
+                provider.coreDataService
+                    .fetch(page: 1)
+                    .flatMap(convertToCellConfigs)
+                    .flatMap(bookmarkSections)
+                    .filter { $0.count > 0 }
+                    .catchAndReturn([])
+                    .asObservable()
+                    .map { Mutation.setNextPage($0) }
+            ])
         }
     }
     
@@ -128,15 +147,13 @@ class BookmarksReactor: Reactor {
         case let .setLoading(isLoading):
             newState.isLoadingNextPage = isLoading
             
-        case let .setAfterInit(sections):
+        case let .setNextPage(sections):
             newState.currPage += 1
-            newState.isLoadingNextPage = false
             newState.sections = sections
             
         case let .setSearchResult(query, sections):
             newState.query = query
             newState.sections = sections
-            newState.isLoadingNextPage = false
             newState.currPage = 1
             
         case .setCanceled:
@@ -152,10 +169,11 @@ class BookmarksReactor: Reactor {
 extension BookmarksReactor {
     // MARK: Function components
     
-    private func bookmarkSections(with configsDict: [String: [CellConfigProtocol]])
+    private func bookmarkSections(with configsDict: [String: [CellConfigType]])
     -> Single<[BookmarkSection]> {
         return Single.create { [weak self] single in
-            guard let `self` = self else { return Disposables.create() }
+            guard let self = self else { return Disposables.create() }
+            self.cachedConfigDict = configsDict
             var sections: [BookmarkSection] = []
             
             let sortedConfigs = configsDict.sorted { lhs, rhs in
@@ -176,9 +194,9 @@ extension BookmarksReactor {
     }
     
     private func convertToCellConfigs(with result: Result<[UserItem], Error>)
-    -> Single<[String: [CellConfigProtocol]]> {
+    -> Single<[String: [CellConfigType]]> {
         return Single.create { [weak self] observer in
-            guard let `self` = self else { return Disposables.create() }
+            guard let self = self else { return Disposables.create() }
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -187,10 +205,10 @@ extension BookmarksReactor {
                 if items.count <= 0 {
                     observer(.success([:]))
                 }
-                var configsDict: [String: [CellConfigProtocol]] = [:]
+                var configsDict: [String: [CellConfigType]] = self.cachedConfigDict
                 
                 items.forEach { [weak self] item in
-                    guard let `self` = self else { return }
+                    guard let self = self else { return }
                     
                     let model = UserItemModel(login: item.login!,
                                               id: Int(item.id),
