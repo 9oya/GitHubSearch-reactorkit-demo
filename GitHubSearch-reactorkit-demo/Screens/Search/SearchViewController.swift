@@ -20,7 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
     var cellConfigs: [CellConfigProtocol] = []
     
     func bind(reactor: SearchReactor) {
-        setupViews(reactor)
+        setupViews()
         bindAction(reactor)
         bindState(reactor)
     }
@@ -98,7 +98,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
             .disposed(by: disposeBag)
     }
     
-    func setupViews(_ reactor: SearchReactor) {
+    func setupViews() {
         guard let nc = navigationController else { return }
         nc.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white

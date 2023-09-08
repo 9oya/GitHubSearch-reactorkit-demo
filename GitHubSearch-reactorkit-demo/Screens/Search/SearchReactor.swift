@@ -50,8 +50,8 @@ class SearchReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .search(keyword):
-            return Observable.concat([
-                Observable.just(.setLoadingNextPage(false)),
+            return .concat([
+                .just(.setLoadingNextPage(false)),
                 
                 provider
                     .networkService
@@ -60,15 +60,15 @@ class SearchReactor: Reactor {
                     .filter { $0.count > 0 }
                     .catchAndReturn([])
                     .asObservable()
-                    .map { Mutation.setUsers($0)}
+                    .map { .setUsers($0)}
             ])
         case .nextPage:
             guard !currentState.isLoadingNextPage,
                     !currentState.isCanceled,
                     let query = currentState.query else { return .empty() }
             
-            return Observable.concat([
-                Observable.just(.setLoadingNextPage(true)),
+            return .concat([
+                .just(.setLoadingNextPage(true)),
                 
                 provider
                     .networkService
@@ -79,7 +79,7 @@ class SearchReactor: Reactor {
                     .asObservable()
                     .map { [weak self] cellConfigs in
                         guard let self = self else { return .setUsers([]) }
-                        return Mutation.setUsers(self.currentState.cellConfigs + cellConfigs)
+                        return .setUsers(self.currentState.cellConfigs + cellConfigs)
                     }
             ])
         case .cancel:
@@ -88,21 +88,18 @@ class SearchReactor: Reactor {
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
-        var newSate = state
+        var newSate: State = state
         
         switch mutation {
         case let .setUsers(cellConfigs):
-            newSate = state
             newSate.currentPage = 1
             newSate.isLoadingNextPage = false
             newSate.cellConfigs = cellConfigs
             
         case let .setLoadingNextPage(isLoading):
-            newSate = state
             newSate.isLoadingNextPage = isLoading
             
         case .setCanceled:
-            newSate = state
             newSate.isCanceled = true
             newSate.cellConfigs = []
         }

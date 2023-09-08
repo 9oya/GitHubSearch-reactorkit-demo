@@ -37,28 +37,25 @@ extension SceneDelegate {
                            withConfiguration: config)
         }()
         searchVC.reactor = SearchReactor(title: "Search",
-                                         placeHolder: "Name...",
+                                         placeHolder: "Type name...",
                                          provider: provider)
         
-//        let bookmarksVM = BookmarksViewModel(title: "Bookmarks",
-//                                             placeHolder: "Name...",
-//                                             provider: provider)
-//        let bookmarksVC = BookmarksViewController()
-//        bookmarksVC.viewModel = bookmarksVM
-//
-//        let bookmarksNC = UINavigationController(rootViewController: bookmarksVC)
-//        bookmarksNC.tabBarItem.image = {
-//            let config = UIImage
-//                .SymbolConfiguration(pointSize: 15.0,
-//                                     weight: .regular,
-//                                     scale: .large)
-//            return UIImage(systemName: "bookmark",
-//                           withConfiguration: config)
-//        }()
+        let bookmarksVC = BookmarksViewController()
+        let bookmarksNC = UINavigationController(rootViewController: bookmarksVC)
+        bookmarksNC.tabBarItem.image = {
+            let config = UIImage
+                .SymbolConfiguration(pointSize: 15.0,
+                                     weight: .regular,
+                                     scale: .large)
+            return UIImage(systemName: "bookmark",
+                           withConfiguration: config)
+        }()
+        bookmarksVC.reactor = BookmarksReactor(title: "Bookmarks",
+                                               placeHolder: "User name...",
+                                               provider: provider)
         
         let tc = MainTabbarController()
-//        tc.viewControllers = [searchNC, bookmarksNC]
-        tc.viewControllers = [searchNC]
+        tc.viewControllers = [searchNC, bookmarksNC]
         return tc
     }
 }
