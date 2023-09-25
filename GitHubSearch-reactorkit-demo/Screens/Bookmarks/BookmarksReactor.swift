@@ -8,13 +8,18 @@
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RxFlow
 
-class BookmarksReactor: Reactor {
+class BookmarksReactor: Reactor, Stepper {
+    
+    let steps: PublishRelay<Step> = PublishRelay<Step>()
+    
     enum Action {
         case initUsers
         case search(String?)
         case nextPage
         case cancel
+        case selectRow(Int, Int)
     }
     
     enum Mutation {
@@ -134,6 +139,16 @@ class BookmarksReactor: Reactor {
                     .asObservable()
                     .map { Mutation.setNextPage($0) }
             ])
+            
+        case let .selectRow(section, row):
+            if let rowConfig = currentState.sections[section].items[row] as? UserListTbCellReactor {
+                steps.accept(AppSteps.detailIsRequired(
+                    rowConfig.currentState.userItemModel.login,
+                    rowConfig.currentState.userItemModel.avatarUrl
+                ))
+            }
+            
+            return .empty()
         }
     }
     

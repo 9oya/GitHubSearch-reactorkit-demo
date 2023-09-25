@@ -66,20 +66,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, View {
             .do(onNext: { [weak self] idxPath in
                 self?.tv.deselectRow(at: idxPath, animated: true)
             })
-            .bind { [weak self] idxPath in
-                guard let self = self else { return }
-                if let cell: UserListTbCell = self.tv.cellForRow(at: idxPath) as? UserListTbCell,
-                    let login = cell.reactor?.currentState.userItemModel.login,
-                   let avatarUrl = cell.reactor?.currentState.userItemModel.avatarUrl {
-                    let vc = DetailViewController()
-                    vc.reactor = DetailReactor(provider: reactor.provider,
-                                               login: login,
-                                               avatarUrl: avatarUrl)
-                    self.navigationController?
-                        .pushViewController(vc,
-                                            animated: true)
-                }
-            }
+            .map { idxPath in Reactor.Action.selectRow(idxPath.row)}
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     

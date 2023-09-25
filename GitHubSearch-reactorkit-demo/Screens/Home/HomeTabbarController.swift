@@ -1,5 +1,5 @@
 //
-//  MainTabBarViewController.swift
+//  HomeTabbarController.swift
 //  GitHubSearch-reactorkit-demo
 //
 //  Created by 9oya on 9/7/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabbarController: UITabBarController, UITabBarControllerDelegate {
+class HomeTabbarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
