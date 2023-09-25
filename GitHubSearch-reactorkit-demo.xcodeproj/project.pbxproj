@@ -10,6 +10,12 @@
 		18B5D6D2C5532CA9A78B0D66 /* Pods_GitHubSearch_reactorkit_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620027EFA7C83A9150F169C7 /* Pods_GitHubSearch_reactorkit_demo.framework */; };
 		81FE32357ED0AD3AC4DD4D5E /* Pods_GitHubSearch_reactorkit_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154784B033142EAD062DF9E5 /* Pods_GitHubSearch_reactorkit_demoTests.framework */; };
 		BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */; };
+		BF1545432AC11EE70026751E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545422AC11EE70026751E /* DetailViewController.swift */; };
+		BF1545452AC11EEE0026751E /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545442AC11EEE0026751E /* DetailReactor.swift */; };
+		BF1545492AC120610026751E /* ImageTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545482AC120610026751E /* ImageTbCell.swift */; };
+		BF15454B2AC120690026751E /* ImageTbCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454A2AC120690026751E /* ImageTbCellReactor.swift */; };
+		BF15454D2AC120730026751E /* TitleTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454C2AC120730026751E /* TitleTbCell.swift */; };
+		BF15454F2AC1207F0026751E /* TitleTbCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454E2AC1207F0026751E /* TitleTbCellReactor.swift */; };
 		BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977022AA83067001A3883 /* AppDelegate.swift */; };
 		BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977042AA83067001A3883 /* SceneDelegate.swift */; };
 		BFE9770C2AA83068001A3883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9770B2AA83068001A3883 /* Assets.xcassets */; };
@@ -81,6 +87,12 @@
 		683807C9C18BACEE4335AADB /* Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demoTests/Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		69FFE3A030DD8522A0AA172E /* Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		BF1545422AC11EE70026751E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BF1545442AC11EEE0026751E /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
+		BF1545482AC120610026751E /* ImageTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTbCell.swift; sourceTree = "<group>"; };
+		BF15454A2AC120690026751E /* ImageTbCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTbCellReactor.swift; sourceTree = "<group>"; };
+		BF15454C2AC120730026751E /* TitleTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTbCell.swift; sourceTree = "<group>"; };
+		BF15454E2AC1207F0026751E /* TitleTbCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTbCellReactor.swift; sourceTree = "<group>"; };
 		BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHubSearch-reactorkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977022AA83067001A3883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE977042AA83067001A3883 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +191,33 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		BF1545412AC11EDA0026751E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF1545422AC11EE70026751E /* DetailViewController.swift */,
+				BF1545442AC11EEE0026751E /* DetailReactor.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		BF1545462AC120050026751E /* ImageTbCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF1545482AC120610026751E /* ImageTbCell.swift */,
+				BF15454A2AC120690026751E /* ImageTbCellReactor.swift */,
+			);
+			path = ImageTbCell;
+			sourceTree = "<group>";
+		};
+		BF1545472AC120400026751E /* TitleTbCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF15454C2AC120730026751E /* TitleTbCell.swift */,
+				BF15454E2AC1207F0026751E /* TitleTbCellReactor.swift */,
+			);
+			path = TitleTbCell;
+			sourceTree = "<group>";
+		};
 		BFE976F62AA83067001A3883 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +280,7 @@
 				BF129D102AA99BF000E4463F /* TabBar */,
 				BFE9773D2AA852F3001A3883 /* Bookmarks */,
 				BFE9773C2AA852EC001A3883 /* Search */,
+				BF1545412AC11EDA0026751E /* Detail */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -362,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				BFE977822AA86387001A3883 /* CellConfig.swift */,
+				BF1545472AC120400026751E /* TitleTbCell */,
+				BF1545462AC120050026751E /* ImageTbCell */,
 				BFE9779F2AA86A79001A3883 /* UserListTbCell */,
 			);
 			path = Cells;
@@ -628,15 +670,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1545492AC120610026751E /* ImageTbCell.swift in Sources */,
 				BFE9774F2AA856AD001A3883 /* BookmarksViewController.swift in Sources */,
 				BFE977A42AA87C3B001A3883 /* CustomErrorTypes.swift in Sources */,
 				BFE977412AA85464001A3883 /* SearchReactor.swift in Sources */,
 				BFE9778E2AA867EA001A3883 /* ManagerProvider.swift in Sources */,
 				BFE9779A2AA86A41001A3883 /* AnimatableButton.swift in Sources */,
 				BFE977512AA856B6001A3883 /* BookmarksReactor.swift in Sources */,
+				BF15454F2AC1207F0026751E /* TitleTbCellReactor.swift in Sources */,
 				BFE9775C2AA85AAE001A3883 /* BookmarkSection.swift in Sources */,
 				BFE9779C2AA86A61001A3883 /* UserListTbCell.swift in Sources */,
 				BFE977852AA86753001A3883 /* NetworkService.swift in Sources */,
+				BF15454D2AC120730026751E /* TitleTbCell.swift in Sources */,
 				BFE977922AA867FC001A3883 /* CacheManager.swift in Sources */,
 				BFE9774A2AA8551E001A3883 /* APIRouter.swift in Sources */,
 				BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */,
@@ -645,8 +690,11 @@
 				BFE977732AA85F0C001A3883 /* String+Extension.swift in Sources */,
 				BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */,
 				BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */,
+				BF1545452AC11EEE0026751E /* DetailReactor.swift in Sources */,
 				BFE977552AA859BC001A3883 /* GitHubSearch-reactorkit-demo.xcdatamodeld in Sources */,
+				BF15454B2AC120690026751E /* ImageTbCellReactor.swift in Sources */,
 				BFE9773F2AA85325001A3883 /* SearchViewController.swift in Sources */,
+				BF1545432AC11EE70026751E /* DetailViewController.swift in Sources */,
 				BFE977832AA86387001A3883 /* CellConfig.swift in Sources */,
 				BFE977882AA8678F001A3883 /* SearchResponseModel.swift in Sources */,
 				BFE977962AA86861001A3883 /* ImageService.swift in Sources */,
