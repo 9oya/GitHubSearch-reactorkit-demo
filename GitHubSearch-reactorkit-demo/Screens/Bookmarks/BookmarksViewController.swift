@@ -70,9 +70,11 @@ class BookmarksViewController: UIViewController, UITableViewDelegate, View {
             .disposed(by: disposeBag)
         
         tv.rx.itemSelected
-            .bind { [weak self] indexPath in
-                self?.tv.deselectRow(at: indexPath, animated: true)
-            }
+            .do(onNext: { [weak self] idxPath in
+                self?.tv.deselectRow(at: idxPath, animated: true)
+            })
+            .map { idxPath in Reactor.Action.selectRow(idxPath.section, idxPath.row)}
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     

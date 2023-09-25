@@ -8,12 +8,17 @@
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RxFlow
 
-class SearchReactor: Reactor {
+class SearchReactor: Reactor, Stepper {
+    
+    let steps: PublishRelay<Step> = PublishRelay<Step>()
+    
     enum Action {
         case search(String)
         case nextPage
         case cancel
+        case selectRow(Int)
     }
     
     enum Mutation {
@@ -93,6 +98,16 @@ class SearchReactor: Reactor {
             ])
         case .cancel:
             return .just(.setCanceled(true))
+            
+        case let .selectRow(row):
+            if let rowConfig = currentState.rowConfigs[row] as? UserListTbCellReactor {
+                steps.accept(AppSteps.detailIsRequired(
+                    rowConfig.currentState.userItemModel.login,
+                    rowConfig.currentState.userItemModel.avatarUrl
+                ))
+            }
+            
+            return .empty()
         }
     }
     
@@ -126,6 +141,7 @@ class SearchReactor: Reactor {
 }
 
 extension SearchReactor {
+    
     // MARK: Function components
     
     private func convertTorowConfigs(with result: Result<SearchResponseModel, Error>)
