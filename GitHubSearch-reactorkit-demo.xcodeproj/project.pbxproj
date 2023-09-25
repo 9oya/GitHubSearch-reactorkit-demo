@@ -9,13 +9,19 @@
 /* Begin PBXBuildFile section */
 		18B5D6D2C5532CA9A78B0D66 /* Pods_GitHubSearch_reactorkit_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620027EFA7C83A9150F169C7 /* Pods_GitHubSearch_reactorkit_demo.framework */; };
 		81FE32357ED0AD3AC4DD4D5E /* Pods_GitHubSearch_reactorkit_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154784B033142EAD062DF9E5 /* Pods_GitHubSearch_reactorkit_demoTests.framework */; };
-		BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */; };
+		BF129D122AA99C0900E4463F /* HomeTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF129D112AA99C0900E4463F /* HomeTabbarController.swift */; };
 		BF1545432AC11EE70026751E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545422AC11EE70026751E /* DetailViewController.swift */; };
 		BF1545452AC11EEE0026751E /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545442AC11EEE0026751E /* DetailReactor.swift */; };
 		BF1545492AC120610026751E /* ImageTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545482AC120610026751E /* ImageTbCell.swift */; };
 		BF15454B2AC120690026751E /* ImageTbCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454A2AC120690026751E /* ImageTbCellReactor.swift */; };
 		BF15454D2AC120730026751E /* TitleTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454C2AC120730026751E /* TitleTbCell.swift */; };
 		BF15454F2AC1207F0026751E /* TitleTbCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15454E2AC1207F0026751E /* TitleTbCellReactor.swift */; };
+		BF1545522AC15E2E0026751E /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = BF1545512AC15E2E0026751E /* RxFlow */; };
+		BF1545542AC166A70026751E /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545532AC166A70026751E /* AppSteps.swift */; };
+		BF1545562AC168170026751E /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545552AC168170026751E /* AppFlow.swift */; };
+		BF1545582AC169DC0026751E /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545572AC169DC0026751E /* AppStepper.swift */; };
+		BF15455C2AC16E9D0026751E /* BookmarksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15455B2AC16E9D0026751E /* BookmarksFlow.swift */; };
+		BF15455E2AC172E00026751E /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15455D2AC172E00026751E /* SearchFlow.swift */; };
 		BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977022AA83067001A3883 /* AppDelegate.swift */; };
 		BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977042AA83067001A3883 /* SceneDelegate.swift */; };
 		BFE9770C2AA83068001A3883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9770B2AA83068001A3883 /* Assets.xcassets */; };
@@ -86,13 +92,18 @@
 		620027EFA7C83A9150F169C7 /* Pods_GitHubSearch_reactorkit_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSearch_reactorkit_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683807C9C18BACEE4335AADB /* Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demoTests/Pods-GitHubSearch-reactorkit-demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		69FFE3A030DD8522A0AA172E /* Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests/Pods-GitHubSearch-reactorkit-demo-GitHubSearch-reactorkit-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		BF129D112AA99C0900E4463F /* HomeTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarController.swift; sourceTree = "<group>"; };
 		BF1545422AC11EE70026751E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BF1545442AC11EEE0026751E /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
 		BF1545482AC120610026751E /* ImageTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTbCell.swift; sourceTree = "<group>"; };
 		BF15454A2AC120690026751E /* ImageTbCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTbCellReactor.swift; sourceTree = "<group>"; };
 		BF15454C2AC120730026751E /* TitleTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTbCell.swift; sourceTree = "<group>"; };
 		BF15454E2AC1207F0026751E /* TitleTbCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTbCellReactor.swift; sourceTree = "<group>"; };
+		BF1545532AC166A70026751E /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
+		BF1545552AC168170026751E /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		BF1545572AC169DC0026751E /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		BF15455B2AC16E9D0026751E /* BookmarksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksFlow.swift; sourceTree = "<group>"; };
+		BF15455D2AC172E00026751E /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHubSearch-reactorkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977022AA83067001A3883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE977042AA83067001A3883 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1545522AC15E2E0026751E /* RxFlow in Frameworks */,
 				BFE977782AA860C4001A3883 /* RxCocoa in Frameworks */,
 				BFE977632AA85CDE001A3883 /* Kingfisher in Frameworks */,
 				BFE9777A2AA860C4001A3883 /* RxRelay in Frameworks */,
@@ -183,12 +195,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BF129D102AA99BF000E4463F /* TabBar */ = {
+		BF129D102AA99BF000E4463F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BF129D112AA99C0900E4463F /* MainTabBarViewController.swift */,
+				BF129D112AA99C0900E4463F /* HomeTabbarController.swift */,
 			);
-			path = TabBar;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		BF1545412AC11EDA0026751E /* Detail */ = {
@@ -277,7 +289,7 @@
 		BFE9773A2AA852C3001A3883 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				BF129D102AA99BF000E4463F /* TabBar */,
+				BF129D102AA99BF000E4463F /* Home */,
 				BFE9773D2AA852F3001A3883 /* Bookmarks */,
 				BFE9773C2AA852EC001A3883 /* Search */,
 				BF1545412AC11EDA0026751E /* Detail */,
@@ -288,6 +300,9 @@
 		BFE9773B2AA852CD001A3883 /* AppStart */ = {
 			isa = PBXGroup;
 			children = (
+				BF1545532AC166A70026751E /* AppSteps.swift */,
+				BF1545552AC168170026751E /* AppFlow.swift */,
+				BF1545572AC169DC0026751E /* AppStepper.swift */,
 				BFE977022AA83067001A3883 /* AppDelegate.swift */,
 				BFE977042AA83067001A3883 /* SceneDelegate.swift */,
 			);
@@ -297,6 +312,7 @@
 		BFE9773C2AA852EC001A3883 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				BF15455D2AC172E00026751E /* SearchFlow.swift */,
 				BFE9773E2AA85325001A3883 /* SearchViewController.swift */,
 				BFE977402AA85464001A3883 /* SearchReactor.swift */,
 			);
@@ -306,6 +322,7 @@
 		BFE9773D2AA852F3001A3883 /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				BF15455B2AC16E9D0026751E /* BookmarksFlow.swift */,
 				BFE9774E2AA856AD001A3883 /* BookmarksViewController.swift */,
 				BFE977502AA856B6001A3883 /* BookmarksReactor.swift */,
 			);
@@ -476,6 +493,7 @@
 				BFE9777C2AA86188001A3883 /* Differentiator */,
 				BFE9777E2AA86188001A3883 /* RxDataSources */,
 				BFE977A12AA86C79001A3883 /* SnapKit */,
+				BF1545512AC15E2E0026751E /* RxFlow */,
 			);
 			productName = "GitHubSearch-reactorkit-demo";
 			productReference = BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */;
@@ -558,6 +576,7 @@
 				BFE977742AA860C4001A3883 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				BFE9777B2AA86188001A3883 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BFE977A02AA86C79001A3883 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BF1545502AC15E2E0026751E /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			productRefGroup = BFE977002AA83067001A3883 /* Products */;
 			projectDirPath = "";
@@ -671,11 +690,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1545492AC120610026751E /* ImageTbCell.swift in Sources */,
+				BF1545542AC166A70026751E /* AppSteps.swift in Sources */,
 				BFE9774F2AA856AD001A3883 /* BookmarksViewController.swift in Sources */,
 				BFE977A42AA87C3B001A3883 /* CustomErrorTypes.swift in Sources */,
 				BFE977412AA85464001A3883 /* SearchReactor.swift in Sources */,
 				BFE9778E2AA867EA001A3883 /* ManagerProvider.swift in Sources */,
 				BFE9779A2AA86A41001A3883 /* AnimatableButton.swift in Sources */,
+				BF15455C2AC16E9D0026751E /* BookmarksFlow.swift in Sources */,
 				BFE977512AA856B6001A3883 /* BookmarksReactor.swift in Sources */,
 				BF15454F2AC1207F0026751E /* TitleTbCellReactor.swift in Sources */,
 				BFE9775C2AA85AAE001A3883 /* BookmarkSection.swift in Sources */,
@@ -686,9 +707,10 @@
 				BFE9774A2AA8551E001A3883 /* APIRouter.swift in Sources */,
 				BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */,
 				BFE977662AA85D75001A3883 /* UIViewController+Rx.swift in Sources */,
+				BF1545562AC168170026751E /* AppFlow.swift in Sources */,
 				BFE977592AA85A69001A3883 /* UserItem+CoreDataClass.swift in Sources */,
 				BFE977732AA85F0C001A3883 /* String+Extension.swift in Sources */,
-				BF129D122AA99C0900E4463F /* MainTabBarViewController.swift in Sources */,
+				BF129D122AA99C0900E4463F /* HomeTabbarController.swift in Sources */,
 				BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */,
 				BF1545452AC11EEE0026751E /* DetailReactor.swift in Sources */,
 				BFE977552AA859BC001A3883 /* GitHubSearch-reactorkit-demo.xcdatamodeld in Sources */,
@@ -697,12 +719,14 @@
 				BF1545432AC11EE70026751E /* DetailViewController.swift in Sources */,
 				BFE977832AA86387001A3883 /* CellConfig.swift in Sources */,
 				BFE977882AA8678F001A3883 /* SearchResponseModel.swift in Sources */,
+				BF15455E2AC172E00026751E /* SearchFlow.swift in Sources */,
 				BFE977962AA86861001A3883 /* ImageService.swift in Sources */,
 				BFE9778A2AA86797001A3883 /* UserItemModel.swift in Sources */,
 				BFE9774D2AA8557E001A3883 /* UITableView+Extension.swift in Sources */,
 				BFE977902AA867F5001A3883 /* ManagedContext.swift in Sources */,
 				BFE977982AA86869001A3883 /* ServiceProvider.swift in Sources */,
 				BFE9775A2AA85A69001A3883 /* UserItem+CoreDataProperties.swift in Sources */,
+				BF1545582AC169DC0026751E /* AppStepper.swift in Sources */,
 				BFE977942AA86855001A3883 /* CoreDataService.swift in Sources */,
 				BFE9778C2AA8679E001A3883 /* UserInfoModel.swift in Sources */,
 				BFE9779E2AA86A6C001A3883 /* UserListTbCellReactor.swift in Sources */,
@@ -1052,6 +1076,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF1545502AC15E2E0026751E /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.13.0;
+			};
+		};
 		BFE977322AA84EC3001A3883 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -1103,6 +1135,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF1545512AC15E2E0026751E /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1545502AC15E2E0026751E /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
+		};
 		BFE977332AA84EC3001A3883 /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFE977322AA84EC3001A3883 /* XCRemoteSwiftPackageReference "ReactorKit" */;

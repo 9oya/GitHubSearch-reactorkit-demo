@@ -7,55 +7,40 @@
 
 import UIKit
 import ReactorKit
+import RxSwift
+import RxCocoa
+import RxFlow
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let coordinator = FlowCoordinator()
+    let disposeBag = DisposeBag()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = rootViewController()
-        window?.makeKeyAndVisible()
+        
+        
+        coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+            print("will navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: disposeBag)
+
+        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: disposeBag)
+        
+        let serviceProvider = ServiceProvider.resolve()
+        let appFlow = AppFlow(serviceProvider: serviceProvider)
+        
+        coordinator.coordinate(flow: appFlow,
+                               with: AppStepper(serviceProvider: serviceProvider))
+        
+        Flows.use(appFlow, when: .created) { [weak self] root in
+            self?.window?.rootViewController = root
+            self?.window?.makeKeyAndVisible()
+        }
     }
 
-}
-
-extension SceneDelegate {
-    
-    private func rootViewController() -> UIViewController {
-        let provider = ServiceProvider.resolve()
-        let searchVC = SearchViewController()
-        let searchNC = UINavigationController(rootViewController: searchVC)
-        searchNC.tabBarItem.image = {
-            let config = UIImage
-                .SymbolConfiguration(pointSize: 15.0,
-                                     weight: .regular,
-                                     scale: .large)
-            return UIImage(systemName: "magnifyingglass",
-                           withConfiguration: config)
-        }()
-        searchVC.reactor = SearchReactor(title: "Search",
-                                         placeHolder: "Type name...",
-                                         provider: provider)
-        
-        let bookmarksVC = BookmarksViewController()
-        let bookmarksNC = UINavigationController(rootViewController: bookmarksVC)
-        bookmarksNC.tabBarItem.image = {
-            let config = UIImage
-                .SymbolConfiguration(pointSize: 15.0,
-                                     weight: .regular,
-                                     scale: .large)
-            return UIImage(systemName: "bookmark",
-                           withConfiguration: config)
-        }()
-        bookmarksVC.reactor = BookmarksReactor(title: "Bookmarks",
-                                               placeHolder: "User name...",
-                                               provider: provider)
-        
-        let tc = MainTabbarController()
-        tc.viewControllers = [searchNC, bookmarksNC]
-        return tc
-    }
 }
