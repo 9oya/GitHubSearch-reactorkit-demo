@@ -21,11 +21,7 @@ class AppFlow: Flow {
         return tc
     }()
     
-    private let serviceProvider: ServiceProviderProtocol
-    
-    init(serviceProvider: ServiceProviderProtocol) {
-        self.serviceProvider = serviceProvider
-    }
+    init() {}
     
     deinit {
         print("\(type(of: self)): \(#function)")
@@ -36,15 +32,15 @@ class AppFlow: Flow {
         
         switch step {
         case .homeIsRequired:
-            return navigationToHomeScreen(serviceProvider)
+            return navigationToHomeScreen()
         default:
             return .none
         }
     }
     
-    private func navigationToHomeScreen(_ serviceProvider: ServiceProviderProtocol) -> FlowContributors {
-        let searchFlow = SearchFlow(serviceProvider: serviceProvider)
-        let bookmarksFlow = BookmarksFlow(serviceProvider: serviceProvider)
+    private func navigationToHomeScreen() -> FlowContributors {
+        let searchFlow = SearchFlow()
+        let bookmarksFlow = BookmarksFlow()
         
         let searchVC = SearchViewController()
         let bookmarksVC = BookmarksViewController()
@@ -65,8 +61,7 @@ class AppFlow: Flow {
                                withConfiguration: config)
             }()
             searchVC.reactor = SearchReactor(title: "Search",
-                                             placeHolder: "Type name...",
-                                             provider: serviceProvider)
+                                             placeHolder: "Type name...")
             
             bookmarksNC.setViewControllers([bookmarksVC], animated: false)
             bookmarksNC.tabBarItem.image = {
@@ -78,8 +73,7 @@ class AppFlow: Flow {
                                withConfiguration: config)
             }()
             bookmarksVC.reactor = BookmarksReactor(title: "Bookmarks",
-                                                   placeHolder: "User name...",
-                                                   provider: serviceProvider)
+                                                   placeHolder: "User name...")
             
             self.rootVC.viewControllers = [searchNC, bookmarksNC]
         }

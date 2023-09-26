@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        
         coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
             print("will navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: disposeBag)
@@ -31,11 +30,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("did navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: disposeBag)
         
-        let serviceProvider = ServiceProvider.resolve()
-        let appFlow = AppFlow(serviceProvider: serviceProvider)
+        let appFlow = AppFlow()
         
         coordinator.coordinate(flow: appFlow,
-                               with: AppStepper(serviceProvider: serviceProvider))
+                               with: AppStepper())
         
         Flows.use(appFlow, when: .created) { [weak self] root in
             self?.window?.rootViewController = root

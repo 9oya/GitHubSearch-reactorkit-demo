@@ -9,8 +9,11 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import RxFlow
+import Factory
 
 class SearchReactor: Reactor, Stepper {
+    
+    @Injected(\.networkService) var networkService
     
     let steps: PublishRelay<Step> = PublishRelay<Step>()
     
@@ -39,18 +42,15 @@ class SearchReactor: Reactor, Stepper {
     }
     
     var initialState: State
-    let provider: ServiceProviderProtocol
     
     init(title: String, 
-         placeHolder: String,
-         provider: ServiceProviderProtocol) {
+         placeHolder: String) {
         self.initialState = State(title: title,
                                   placeHolder: placeHolder,
                                   rowConfigs: [],
                                   currentPage: 0,
                                   isLoadingNextPage: false,
                                   isCanceled: false)
-        self.provider = provider
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -65,8 +65,7 @@ class SearchReactor: Reactor, Stepper {
                 .just(.setLoadingNextPage(true)),
                 .just(.setCanceled(false)),
                 
-                provider
-                    .networkService
+                networkService
                     .search(with: query, for: 1)
                     .flatMap(convertTorowConfigs)
                     .filter { $0.count > 0 }
@@ -84,8 +83,7 @@ class SearchReactor: Reactor, Stepper {
             return .concat([
                 .just(.setLoadingNextPage(true)),
                 
-                provider
-                    .networkService
+                networkService
                     .search(with: query,
                             for: currentState.currentPage+1)
                     .flatMap(convertTorowConfigs)
@@ -101,9 +99,9 @@ class SearchReactor: Reactor, Stepper {
             
         case let .selectRow(row):
             if let rowConfig = currentState.rowConfigs[row] as? UserListTbCellReactor {
-                steps.accept(AppSteps.detailIsRequired(
-                    rowConfig.currentState.userItemModel.login,
-                    rowConfig.currentState.userItemModel.avatarUrl
+                steps.accept(AppSteps.userIsPicked(
+                    login: rowConfig.currentState.userItemModel.login,
+                    avatarUrl: rowConfig.currentState.userItemModel.avatarUrl
                 ))
             }
             
@@ -157,7 +155,6 @@ extension SearchReactor {
                 model.items.forEach {
                     configs.append(
                         UserListTbCellReactor(userItemModel: $0,
-                                              provider: self.provider,
                                               cellHeight: 110)
                     )
                 }

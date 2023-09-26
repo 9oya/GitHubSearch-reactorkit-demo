@@ -9,8 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import Factory
 
 class ImageTbCellReactor: Reactor, CellConfigType {
+    
+    @Injected(\.imageService) var imageService
     
     enum Action {
         case initImage
@@ -26,23 +29,19 @@ class ImageTbCellReactor: Reactor, CellConfigType {
     }
     
     let initialState: State
-    let provider: ServiceProviderProtocol
     
-    init(provider: ServiceProviderProtocol,
-         cellHeight: CGFloat,
+    init(cellHeight: CGFloat,
          avatarUrl: String) {
         self.initialState = State(avatarUrl: avatarUrl)
-        self.provider = provider
         self.cellHeight = cellHeight
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .initImage:
-            return provider
-                .imageService
+            return imageService
                 .downloadImage(with: currentState.avatarUrl)
-                .flatMap(provider.imageService.validateImage(_:))
+                .flatMap(imageService.validateImage(_:))
                 .asObservable()
                 .map { .setImage($0) }
             

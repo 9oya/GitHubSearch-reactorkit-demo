@@ -12,11 +12,8 @@ import RxFlow
 class AppStepper: Stepper {
     
     let steps = PublishRelay<Step>()
-    private let serviceProvider: ServiceProviderProtocol
     
-    init(serviceProvider: ServiceProviderProtocol) {
-        self.serviceProvider = serviceProvider
-    }
+    init() {}
     
     var initialStep: Step {
         return AppSteps.homeIsRequired

@@ -18,5 +18,5 @@ enum AppSteps: Step {
     case bookmarksScreenIsRequired
     
     // Detail
-    case detailIsRequired(String, String)
+    case userIsPicked(login: String, avatarUrl: String)
 }
