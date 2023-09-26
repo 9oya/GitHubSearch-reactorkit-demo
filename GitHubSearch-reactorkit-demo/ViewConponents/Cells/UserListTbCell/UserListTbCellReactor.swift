@@ -9,8 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import Factory
 
 class UserListTbCellReactor: Reactor, CellConfigType {
+    
+    @Injected(\.networkService) var networkService
+    @Injected(\.imageService) var imageService
+    @Injected(\.coreDataService) var coreDataService
     
     enum Action {
         case initUserInfo
@@ -36,12 +41,9 @@ class UserListTbCellReactor: Reactor, CellConfigType {
     }
     
     let initialState: State
-    let provider: ServiceProviderProtocol
     
     init(userItemModel: UserItemModel,
-         provider: ServiceProviderProtocol,
          cellHeight: CGFloat) {
-        self.provider = provider
         self.cellHeight = cellHeight
         self.initialState = State(userItemModel: userItemModel,
                                   hasMarked: false)
@@ -50,35 +52,31 @@ class UserListTbCellReactor: Reactor, CellConfigType {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .initUserInfo:
-            return provider
-                .networkService
+            return networkService
                 .detail(id: currentState.userItemModel.login)
                 .asObservable()
                 .map { .setUserInfo($0) }
         case .initImage:
-            return provider
-                .imageService
+            return imageService
                 .downloadImage(with: currentState.userItemModel.avatarUrl)
-                .flatMap(provider.imageService.validateImage(_:))
+                .flatMap(imageService.validateImage(_:))
                 .asObservable()
                 .map { .setImage($0) }
         case .valateBookmark:
-            return provider
-                .coreDataService
+            return coreDataService
                 .match(id: currentState.userItemModel.id)
                 .asObservable()
                 .map { .setBookmark($0) }
         case .selectBookmark:
             return validateUserInfoModelState(state: currentState)
-                .flatMap(provider.coreDataService.store)
+                .flatMap(coreDataService.store)
                 .asObservable()
                 .map { .addBookmark($0) }
         case .unselectBookmark:
-            return provider
-                .coreDataService
+            return coreDataService
                 .match(id: currentState.userItemModel.id)
                 .flatMap(validateUserIdMatch)
-                .flatMap(provider.coreDataService.remove)
+                .flatMap(coreDataService.remove)
                 .asObservable()
                 .map { .removeBookmark($0) }
             
