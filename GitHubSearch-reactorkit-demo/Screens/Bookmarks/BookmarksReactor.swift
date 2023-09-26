@@ -9,8 +9,11 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import RxFlow
+import Factory
 
 class BookmarksReactor: Reactor, Stepper {
+    
+    @Injected(\.coreDataService) var coreDataService
     
     let steps: PublishRelay<Step> = PublishRelay<Step>()
     
@@ -40,18 +43,15 @@ class BookmarksReactor: Reactor, Stepper {
     }
     
     var initialState: State
-    let provider: ServiceProviderProtocol
     var cachedConfigDict: [String: [CellConfigType]] = [:]
     
     init(title: String,
-         placeHolder: String,
-         provider: ServiceProviderProtocol) {
+         placeHolder: String) {
         self.initialState = State(title: title,
                                   placeHolder: placeHolder,
                                   currPage: 1,
                                   isLoadingNextPage: false,
                                   sections: [])
-        self.provider = provider
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -59,11 +59,11 @@ class BookmarksReactor: Reactor, Stepper {
         case .initUsers:
             var functionComponent: PrimitiveSequence<SingleTrait, Result<[UserItem], Error>>
             if currentState.query != nil {
-                functionComponent = provider.coreDataService
+                functionComponent = coreDataService
                     .search(with: currentState.query!,
                             for: currentState.currPage)
             } else {
-                functionComponent = provider.coreDataService
+                functionComponent = coreDataService
                     .fetch(page: currentState.currPage)
             }
             
@@ -87,8 +87,7 @@ class BookmarksReactor: Reactor, Stepper {
             return .concat([
                 .just(.setLoading(false)),
                 
-                provider
-                    .coreDataService
+                coreDataService
                     .search(with: query!,
                             for: 1)
                     .flatMap(convertToCellConfigs)
@@ -104,11 +103,11 @@ class BookmarksReactor: Reactor, Stepper {
             
             var functionComponent: PrimitiveSequence<SingleTrait, Result<[UserItem], Error>>
             if currentState.query != nil {
-                functionComponent = provider.coreDataService
+                functionComponent = coreDataService
                     .search(with: currentState.query!,
                             for: currentState.currPage + 1)
             } else {
-                functionComponent = provider.coreDataService
+                functionComponent = coreDataService
                     .fetch(page: currentState.currPage + 1)
             }
             
@@ -130,7 +129,7 @@ class BookmarksReactor: Reactor, Stepper {
             return .concat([
                 .just(.setCanceled),
                 
-                provider.coreDataService
+                coreDataService
                     .fetch(page: 1)
                     .flatMap(convertToCellConfigs)
                     .flatMap(bookmarkSections)
@@ -142,9 +141,9 @@ class BookmarksReactor: Reactor, Stepper {
             
         case let .selectRow(section, row):
             if let rowConfig = currentState.sections[section].items[row] as? UserListTbCellReactor {
-                steps.accept(AppSteps.detailIsRequired(
-                    rowConfig.currentState.userItemModel.login,
-                    rowConfig.currentState.userItemModel.avatarUrl
+                steps.accept(AppSteps.userIsPicked(
+                    login: rowConfig.currentState.userItemModel.login,
+                    avatarUrl: rowConfig.currentState.userItemModel.avatarUrl
                 ))
             }
             
@@ -229,7 +228,6 @@ extension BookmarksReactor {
                                               id: Int(item.id),
                                               avatarUrl: item.avatarUrl!)
                     let config = UserListTbCellReactor(userItemModel: model,
-                                                       provider: self.provider,
                                                        cellHeight: 110)
                     
                     let headerTxt = (item.name ?? item.login!).firstLetter() ?? ""

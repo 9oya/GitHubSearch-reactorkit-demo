@@ -22,10 +22,10 @@ protocol NetworkServiceProtocol {
 class NetworkService: NetworkServiceProtocol {
     
     private let manager: Session
-    private let decoder: JSONDecoder
+    private let decoder: JSONDecoderProtocol
     
     init(manager: Session,
-         decoder: JSONDecoder) {
+         decoder: JSONDecoderProtocol) {
         self.manager = manager
         self.decoder = decoder
     }

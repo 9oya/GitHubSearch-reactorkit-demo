@@ -8,8 +8,12 @@
 import RxSwift
 import RxCocoa
 import ReactorKit
+import Factory
 
 class DetailReactor: Reactor {
+    
+    @Injected(\.networkService) var networkService
+    
     enum Action {
         case initInfo
     }
@@ -28,23 +32,19 @@ class DetailReactor: Reactor {
     }
     
     var initialState: State
-    let provider: ServiceProviderProtocol
     
-    init(provider: ServiceProviderProtocol, 
-         login: String,
+    init(login: String,
          avatarUrl: String) {
         self.initialState = State(login: login,
                                   avatarUrl: avatarUrl,
                                   isLoading: true,
                                   rowConfigs: [])
-        self.provider = provider
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .initInfo:
-            return provider
-                .networkService
+            return networkService
                 .detail(id: currentState.login)
                 .flatMap(convertTorowConfigs)
                 .catchAndReturn([])
@@ -88,8 +88,7 @@ extension DetailReactor {
                                        title: model.name ?? "Unkown")
                 )
                 configs.append(
-                    ImageTbCellReactor(provider: provider, 
-                                       cellHeight: 100,
+                    ImageTbCellReactor(cellHeight: 100,
                                        avatarUrl: self.currentState.avatarUrl)
                 )
                 configs.append(

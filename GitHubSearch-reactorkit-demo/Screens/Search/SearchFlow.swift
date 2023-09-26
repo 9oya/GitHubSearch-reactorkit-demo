@@ -16,11 +16,8 @@ class SearchFlow: Flow {
     }
     
     private let rootVC = UINavigationController()
-    private let serviceProvider: ServiceProviderProtocol
     
-    init(serviceProvider: ServiceProviderProtocol) {
-        self.serviceProvider = serviceProvider
-    }
+    init() {}
     
     deinit {
         print("\(type(of: self)): \(#function)")
@@ -32,22 +29,19 @@ class SearchFlow: Flow {
         switch step {
         case .searchScreenIsRequired:
             return .none
-        case let .detailIsRequired(login, avatarUrl):
-            return navigationToDetailScreen(serviceProvider: serviceProvider,
-                                            login: login,
+        case let .userIsPicked(login, avatarUrl):
+            return navigationToDetailScreen(login: login,
                                             avatarUrl: avatarUrl)
         default:
             return .none
         }
     }
     
-    private func navigationToDetailScreen(serviceProvider: ServiceProviderProtocol,
-                                          login: String,
+    private func navigationToDetailScreen(login: String,
                                           avatarUrl: String)
     -> FlowContributors {
         let vc = DetailViewController()
-        vc.reactor = DetailReactor(provider: serviceProvider,
-                                   login: login,
+        vc.reactor = DetailReactor(login: login,
                                    avatarUrl: avatarUrl)
         rootVC.pushViewController(vc, animated: true)
         return .none

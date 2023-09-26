@@ -22,6 +22,9 @@
 		BF1545582AC169DC0026751E /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1545572AC169DC0026751E /* AppStepper.swift */; };
 		BF15455C2AC16E9D0026751E /* BookmarksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15455B2AC16E9D0026751E /* BookmarksFlow.swift */; };
 		BF15455E2AC172E00026751E /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15455D2AC172E00026751E /* SearchFlow.swift */; };
+		BFE24B492AC29A730033277A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = BFE24B482AC29A730033277A /* Factory */; };
+		BFE24B532AC2ACA30033277A /* PersistentContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B522AC2ACA30033277A /* PersistentContainerProtocol.swift */; };
+		BFE24B552AC2ACFC0033277A /* JSONDecoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B542AC2ACFC0033277A /* JSONDecoderProtocol.swift */; };
 		BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977022AA83067001A3883 /* AppDelegate.swift */; };
 		BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977042AA83067001A3883 /* SceneDelegate.swift */; };
 		BFE9770C2AA83068001A3883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9770B2AA83068001A3883 /* Assets.xcassets */; };
@@ -54,12 +57,12 @@
 		BFE977882AA8678F001A3883 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977872AA8678F001A3883 /* SearchResponseModel.swift */; };
 		BFE9778A2AA86797001A3883 /* UserItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977892AA86797001A3883 /* UserItemModel.swift */; };
 		BFE9778C2AA8679E001A3883 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9778B2AA8679E001A3883 /* UserInfoModel.swift */; };
-		BFE9778E2AA867EA001A3883 /* ManagerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9778D2AA867EA001A3883 /* ManagerProvider.swift */; };
+		BFE9778E2AA867EA001A3883 /* Container+Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9778D2AA867EA001A3883 /* Container+Managers.swift */; };
 		BFE977902AA867F5001A3883 /* ManagedContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9778F2AA867F5001A3883 /* ManagedContext.swift */; };
 		BFE977922AA867FC001A3883 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977912AA867FC001A3883 /* CacheManager.swift */; };
 		BFE977942AA86855001A3883 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977932AA86855001A3883 /* CoreDataService.swift */; };
 		BFE977962AA86861001A3883 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977952AA86861001A3883 /* ImageService.swift */; };
-		BFE977982AA86869001A3883 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977972AA86869001A3883 /* ServiceProvider.swift */; };
+		BFE977982AA86869001A3883 /* Container+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977972AA86869001A3883 /* Container+Services.swift */; };
 		BFE9779A2AA86A41001A3883 /* AnimatableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977992AA86A41001A3883 /* AnimatableButton.swift */; };
 		BFE9779C2AA86A61001A3883 /* UserListTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9779B2AA86A61001A3883 /* UserListTbCell.swift */; };
 		BFE9779E2AA86A6C001A3883 /* UserListTbCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9779D2AA86A6C001A3883 /* UserListTbCellReactor.swift */; };
@@ -104,6 +107,8 @@
 		BF1545572AC169DC0026751E /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		BF15455B2AC16E9D0026751E /* BookmarksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksFlow.swift; sourceTree = "<group>"; };
 		BF15455D2AC172E00026751E /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
+		BFE24B522AC2ACA30033277A /* PersistentContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerProtocol.swift; sourceTree = "<group>"; };
+		BFE24B542AC2ACFC0033277A /* JSONDecoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderProtocol.swift; sourceTree = "<group>"; };
 		BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHubSearch-reactorkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977022AA83067001A3883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE977042AA83067001A3883 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,12 +137,12 @@
 		BFE977872AA8678F001A3883 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		BFE977892AA86797001A3883 /* UserItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItemModel.swift; sourceTree = "<group>"; };
 		BFE9778B2AA8679E001A3883 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
-		BFE9778D2AA867EA001A3883 /* ManagerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProvider.swift; sourceTree = "<group>"; };
+		BFE9778D2AA867EA001A3883 /* Container+Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Managers.swift"; sourceTree = "<group>"; };
 		BFE9778F2AA867F5001A3883 /* ManagedContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedContext.swift; sourceTree = "<group>"; };
 		BFE977912AA867FC001A3883 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		BFE977932AA86855001A3883 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		BFE977952AA86861001A3883 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
-		BFE977972AA86869001A3883 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		BFE977972AA86869001A3883 /* Container+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Services.swift"; sourceTree = "<group>"; };
 		BFE977992AA86A41001A3883 /* AnimatableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableButton.swift; sourceTree = "<group>"; };
 		BFE9779B2AA86A61001A3883 /* UserListTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTbCell.swift; sourceTree = "<group>"; };
 		BFE9779D2AA86A6C001A3883 /* UserListTbCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTbCellReactor.swift; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 				BF1545522AC15E2E0026751E /* RxFlow in Frameworks */,
 				BFE977782AA860C4001A3883 /* RxCocoa in Frameworks */,
 				BFE977632AA85CDE001A3883 /* Kingfisher in Frameworks */,
+				BFE24B492AC29A730033277A /* Factory in Frameworks */,
 				BFE9777A2AA860C4001A3883 /* RxRelay in Frameworks */,
 				BFE977602AA85CB0001A3883 /* Alamofire in Frameworks */,
 				BFE9777D2AA86188001A3883 /* Differentiator in Frameworks */,
@@ -361,9 +367,11 @@
 		BFE977452AA8549D001A3883 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				BFE9778D2AA867EA001A3883 /* ManagerProvider.swift */,
+				BFE9778D2AA867EA001A3883 /* Container+Managers.swift */,
 				BFE9778F2AA867F5001A3883 /* ManagedContext.swift */,
+				BFE24B522AC2ACA30033277A /* PersistentContainerProtocol.swift */,
 				BFE977912AA867FC001A3883 /* CacheManager.swift */,
+				BFE24B542AC2ACFC0033277A /* JSONDecoderProtocol.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -371,10 +379,10 @@
 		BFE977462AA854A2001A3883 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BFE977972AA86869001A3883 /* Container+Services.swift */,
 				BFE977842AA86753001A3883 /* NetworkService.swift */,
 				BFE977932AA86855001A3883 /* CoreDataService.swift */,
 				BFE977952AA86861001A3883 /* ImageService.swift */,
-				BFE977972AA86869001A3883 /* ServiceProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -494,6 +502,7 @@
 				BFE9777E2AA86188001A3883 /* RxDataSources */,
 				BFE977A12AA86C79001A3883 /* SnapKit */,
 				BF1545512AC15E2E0026751E /* RxFlow */,
+				BFE24B482AC29A730033277A /* Factory */,
 			);
 			productName = "GitHubSearch-reactorkit-demo";
 			productReference = BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */;
@@ -577,6 +586,7 @@
 				BFE9777B2AA86188001A3883 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BFE977A02AA86C79001A3883 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BF1545502AC15E2E0026751E /* XCRemoteSwiftPackageReference "RxFlow" */,
+				BFE24B472AC29A730033277A /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = BFE977002AA83067001A3883 /* Products */;
 			projectDirPath = "";
@@ -694,7 +704,7 @@
 				BFE9774F2AA856AD001A3883 /* BookmarksViewController.swift in Sources */,
 				BFE977A42AA87C3B001A3883 /* CustomErrorTypes.swift in Sources */,
 				BFE977412AA85464001A3883 /* SearchReactor.swift in Sources */,
-				BFE9778E2AA867EA001A3883 /* ManagerProvider.swift in Sources */,
+				BFE9778E2AA867EA001A3883 /* Container+Managers.swift in Sources */,
 				BFE9779A2AA86A41001A3883 /* AnimatableButton.swift in Sources */,
 				BF15455C2AC16E9D0026751E /* BookmarksFlow.swift in Sources */,
 				BFE977512AA856B6001A3883 /* BookmarksReactor.swift in Sources */,
@@ -702,6 +712,7 @@
 				BFE9775C2AA85AAE001A3883 /* BookmarkSection.swift in Sources */,
 				BFE9779C2AA86A61001A3883 /* UserListTbCell.swift in Sources */,
 				BFE977852AA86753001A3883 /* NetworkService.swift in Sources */,
+				BFE24B552AC2ACFC0033277A /* JSONDecoderProtocol.swift in Sources */,
 				BF15454D2AC120730026751E /* TitleTbCell.swift in Sources */,
 				BFE977922AA867FC001A3883 /* CacheManager.swift in Sources */,
 				BFE9774A2AA8551E001A3883 /* APIRouter.swift in Sources */,
@@ -709,6 +720,7 @@
 				BFE977662AA85D75001A3883 /* UIViewController+Rx.swift in Sources */,
 				BF1545562AC168170026751E /* AppFlow.swift in Sources */,
 				BFE977592AA85A69001A3883 /* UserItem+CoreDataClass.swift in Sources */,
+				BFE24B532AC2ACA30033277A /* PersistentContainerProtocol.swift in Sources */,
 				BFE977732AA85F0C001A3883 /* String+Extension.swift in Sources */,
 				BF129D122AA99C0900E4463F /* HomeTabbarController.swift in Sources */,
 				BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */,
@@ -724,7 +736,7 @@
 				BFE9778A2AA86797001A3883 /* UserItemModel.swift in Sources */,
 				BFE9774D2AA8557E001A3883 /* UITableView+Extension.swift in Sources */,
 				BFE977902AA867F5001A3883 /* ManagedContext.swift in Sources */,
-				BFE977982AA86869001A3883 /* ServiceProvider.swift in Sources */,
+				BFE977982AA86869001A3883 /* Container+Services.swift in Sources */,
 				BFE9775A2AA85A69001A3883 /* UserItem+CoreDataProperties.swift in Sources */,
 				BF1545582AC169DC0026751E /* AppStepper.swift in Sources */,
 				BFE977942AA86855001A3883 /* CoreDataService.swift in Sources */,
@@ -1084,6 +1096,14 @@
 				minimumVersion = 2.13.0;
 			};
 		};
+		BFE24B472AC29A730033277A /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 		BFE977322AA84EC3001A3883 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
@@ -1139,6 +1159,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF1545502AC15E2E0026751E /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		BFE24B482AC29A730033277A /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE24B472AC29A730033277A /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 		BFE977332AA84EC3001A3883 /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
