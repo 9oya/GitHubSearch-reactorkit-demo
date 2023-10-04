@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxFlow
 import RxCocoa
+import Factory
 
 class BookmarksFlow: Flow {
     var root: RxFlow.Presentable {
@@ -41,8 +42,9 @@ class BookmarksFlow: Flow {
                                           avatarUrl: String)
     -> FlowContributors {
         let vc = DetailViewController()
-        vc.reactor = DetailReactor(login: login,
-                                   avatarUrl: avatarUrl)
+        vc.reactor = Container.shared
+            .detailReactor(DetailEntity(login: login,
+                                        avatarUrl: avatarUrl))
         rootVC.pushViewController(vc, animated: true)
         return .none
     }

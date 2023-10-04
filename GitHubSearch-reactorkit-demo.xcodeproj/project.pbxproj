@@ -25,6 +25,8 @@
 		BFE24B492AC29A730033277A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = BFE24B482AC29A730033277A /* Factory */; };
 		BFE24B532AC2ACA30033277A /* PersistentContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B522AC2ACA30033277A /* PersistentContainerProtocol.swift */; };
 		BFE24B552AC2ACFC0033277A /* JSONDecoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B542AC2ACFC0033277A /* JSONDecoderProtocol.swift */; };
+		BFE24B572AC3B4060033277A /* Container+Reactors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B562AC3B4060033277A /* Container+Reactors.swift */; };
+		BFE24B602AC3E0130033277A /* ViewEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE24B5F2AC3E0130033277A /* ViewEntities.swift */; };
 		BFE977032AA83067001A3883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977022AA83067001A3883 /* AppDelegate.swift */; };
 		BFE977052AA83067001A3883 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE977042AA83067001A3883 /* SceneDelegate.swift */; };
 		BFE9770C2AA83068001A3883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9770B2AA83068001A3883 /* Assets.xcassets */; };
@@ -109,6 +111,8 @@
 		BF15455D2AC172E00026751E /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		BFE24B522AC2ACA30033277A /* PersistentContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerProtocol.swift; sourceTree = "<group>"; };
 		BFE24B542AC2ACFC0033277A /* JSONDecoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderProtocol.swift; sourceTree = "<group>"; };
+		BFE24B562AC3B4060033277A /* Container+Reactors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Reactors.swift"; sourceTree = "<group>"; };
+		BFE24B5F2AC3E0130033277A /* ViewEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntities.swift; sourceTree = "<group>"; };
 		BFE976FF2AA83067001A3883 /* GitHubSearch-reactorkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHubSearch-reactorkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE977022AA83067001A3883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE977042AA83067001A3883 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +240,14 @@
 			path = TitleTbCell;
 			sourceTree = "<group>";
 		};
+		BFE24B5E2AC3E0050033277A /* ViewEntity */ = {
+			isa = PBXGroup;
+			children = (
+				BFE24B5F2AC3E0130033277A /* ViewEntities.swift */,
+			);
+			name = ViewEntity;
+			sourceTree = "<group>";
+		};
 		BFE976F62AA83067001A3883 = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +307,7 @@
 		BFE9773A2AA852C3001A3883 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BFE24B562AC3B4060033277A /* Container+Reactors.swift */,
 				BF129D102AA99BF000E4463F /* Home */,
 				BFE9773D2AA852F3001A3883 /* Bookmarks */,
 				BFE9773C2AA852EC001A3883 /* Search */,
@@ -348,6 +361,7 @@
 		BFE977432AA85481001A3883 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BFE24B5E2AC3E0050033277A /* ViewEntity */,
 				BFE977862AA86782001A3883 /* CodableModels */,
 				BFE977562AA85A69001A3883 /* CoreDataModels */,
 				BFE977522AA856F5001A3883 /* SectionModels */,
@@ -727,7 +741,9 @@
 				BF1545452AC11EEE0026751E /* DetailReactor.swift in Sources */,
 				BFE977552AA859BC001A3883 /* GitHubSearch-reactorkit-demo.xcdatamodeld in Sources */,
 				BF15454B2AC120690026751E /* ImageTbCellReactor.swift in Sources */,
+				BFE24B572AC3B4060033277A /* Container+Reactors.swift in Sources */,
 				BFE9773F2AA85325001A3883 /* SearchViewController.swift in Sources */,
+				BFE24B602AC3E0130033277A /* ViewEntities.swift in Sources */,
 				BF1545432AC11EE70026751E /* DetailViewController.swift in Sources */,
 				BFE977832AA86387001A3883 /* CellConfig.swift in Sources */,
 				BFE977882AA8678F001A3883 /* SearchResponseModel.swift in Sources */,
