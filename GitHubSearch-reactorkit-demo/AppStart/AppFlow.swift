@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxFlow
+import Factory
 
 class AppFlow: Flow {
     var root: Presentable {
@@ -60,8 +61,9 @@ class AppFlow: Flow {
                 return UIImage(systemName: "magnifyingglass",
                                withConfiguration: config)
             }()
-            searchVC.reactor = SearchReactor(title: "Search",
-                                             placeHolder: "Type name...")
+            searchVC.reactor = Container.shared
+                .searchReactor(SearchEntity(title: "Search",
+                                            placeHolder: "Enter user name..."))
             
             bookmarksNC.setViewControllers([bookmarksVC], animated: false)
             bookmarksNC.tabBarItem.image = {
@@ -72,8 +74,9 @@ class AppFlow: Flow {
                 return UIImage(systemName: "bookmark",
                                withConfiguration: config)
             }()
-            bookmarksVC.reactor = BookmarksReactor(title: "Bookmarks",
-                                                   placeHolder: "User name...")
+            bookmarksVC.reactor = Container.shared
+                .bookmarsReactor(SearchEntity(title: "Bookmars",
+                                              placeHolder: "Enter user name..."))
             
             self.rootVC.viewControllers = [searchNC, bookmarksNC]
         }
